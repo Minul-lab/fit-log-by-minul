@@ -1,6 +1,8 @@
 import { promises } from 'dns';
 import Image from 'next/image';
 import React from 'react';
+import BtnTodaysPlan from '../components/btnTodaysPlan';
+import BtnSaveForLater from '../components/btnSaveForLater';
 interface IworkoutDetail {
     params: Promise<{
         id:string;
@@ -21,7 +23,12 @@ const page = async({params}:IworkoutDetail) => {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Image Section */}
           <div className="lg:col-span-2">
-            <Image src={dataDetail.image} width={500} height={1000} alt={dataDetail.name}></Image>
+            <Image
+              src={dataDetail.image}
+              width={500}
+              height={1000}
+              alt={dataDetail.name}
+            ></Image>
           </div>
 
           {/* Details Section */}
@@ -135,12 +142,8 @@ const page = async({params}:IworkoutDetail) => {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-lime-400 hover:bg-lime-500 text-black font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2">
-                📋 Add to today's plan
-              </button>
-              <button className="border border-gray-700 hover:bg-gray-900 text-gray-300 font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2">
-                💾 Save for later
-              </button>
+              <BtnTodaysPlan dataDetail={dataDetail} />
+              <BtnSaveForLater dataDetail={dataDetail} />
             </div>
           </div>
         </div>

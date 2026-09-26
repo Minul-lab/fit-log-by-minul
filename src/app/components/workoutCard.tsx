@@ -2,7 +2,7 @@ import Image from "next/image";
 import { FaRegClock, FaFire, FaStar } from "react-icons/fa";
 import { Iworkout } from "../types/workoutType";
 import Link from "next/link";
-import { link } from "fs";
+
 
 const WorkoutCard = ({workoutData}:{workoutData:Iworkout}) => {
   return (

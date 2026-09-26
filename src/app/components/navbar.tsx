@@ -52,7 +52,7 @@ const Navbar = () => {
               </li>
 
               <li>
-                <Link href={"/"}>My plan</Link>
+                <Link href={"/my-plan"}>My plan</Link>
               </li>
             </ul>
           </div>
