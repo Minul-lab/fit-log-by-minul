@@ -1,9 +1,10 @@
 import React from 'react';
+import Hero from './components/hero';
 
 const page = () => {
   return (
     <div className="">
-      <button className="btn btn-primary">Hello DaisyUI!</button>
+      <Hero></Hero>
     </div>
   );
 };
