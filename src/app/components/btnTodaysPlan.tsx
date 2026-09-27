@@ -5,7 +5,10 @@ import { WorkoutCreateContexts } from "../context/workoutContext";
 import { Bounce, toast } from "react-toastify";
 
 const BtnTodaysPlan = ({ dataDetail }: { dataDetail: Iworkout }) => {
-  const { todaysPlan, setTodaysPlan } = useContext(WorkoutCreateContexts);
+  const { todaysPlan, setTodaysPlan } = useContext(WorkoutCreateContexts) as {
+    todaysPlan: Iworkout[];
+    setTodaysPlan: React.Dispatch<React.SetStateAction<Iworkout[]>>;
+  };
 
   const handleTodaysPlan = () => {
     const alreadyAdded = todaysPlan.some(

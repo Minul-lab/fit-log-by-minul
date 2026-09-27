@@ -4,11 +4,18 @@ import Link from "next/link";
 import Image from 'next/image';
 import { WorkoutCreateContexts } from "../context/workoutContext";
 import { usePathname } from "next/navigation";
+import { Iworkout } from "../types/workoutType";
 
 const Navbar = () => {
   const pathname = usePathname();
-  const { todaysPlan, saveLater } = useContext(WorkoutCreateContexts);
-    return (
+  const { todaysPlan = [], saveLater = [] } = (useContext(
+    WorkoutCreateContexts
+  ) ?? {}) as {
+    todaysPlan: Iworkout[];
+    saveLater?: Iworkout[];
+  };
+
+  return (
       <div className="container mx-auto">
         <div className="navbar shadow-sm">
           <div className="navbar-start">

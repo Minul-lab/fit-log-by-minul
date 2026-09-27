@@ -5,7 +5,10 @@ import { WorkoutCreateContexts } from "../context/workoutContext";
 import { Bounce, toast } from "react-toastify";
 
 const BtnSaveForLater = ({ dataDetail }: { dataDetail: Iworkout }) => {
-  const { saveLater, setSaveLater } = useContext(WorkoutCreateContexts);
+  const { saveLater, setSaveLater } = useContext(WorkoutCreateContexts) as {
+    saveLater: Iworkout[];
+    setSaveLater: React.Dispatch<React.SetStateAction<Iworkout[]>>;
+  };
   const handleSaveForLater = () => {
     const alreadySaved = saveLater.some(
       (workout) => workout.id === dataDetail.id,

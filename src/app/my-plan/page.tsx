@@ -3,9 +3,13 @@ import React, { useContext, useState } from "react";
 import { WorkoutCreateContexts } from "../context/workoutContext";
 import Link from "next/link";
 import WorkoutCardplan from "../components/workoutPlanCard";
+import { Iworkout } from "../types/workoutType";
 
 const MyPlan = () => {
-  const { todaysPlan, saveLater } = useContext(WorkoutCreateContexts);
+  const { todaysPlan, saveLater } = useContext(WorkoutCreateContexts) as {
+      todaysPlan: Iworkout[];
+      saveLater: Iworkout[];
+    }
   const [isActive, setIsActive] = useState(true);
 
   const handleActive = () => {
@@ -13,26 +17,26 @@ const MyPlan = () => {
   };
   // Calculate stats from todaysPlan
   const totalExercises = todaysPlan.length;
-  const totalMinutes = todaysPlan.reduce((acc:number, exercise:number) => {
+  const totalMinutes = todaysPlan.reduce((acc, exercise) => {
     // Parse duration string like "25 min" to get the number
-    const minutes = parseInt(exercise.duration) || 0;
+    const minutes = exercise.duration || 0;
     return acc + minutes;
   }, 0);
   const totalCalories = todaysPlan.reduce((acc, exercise) => {
     // Parse calories string like "180 kcal" to get the number
-    const calories = parseInt(exercise.caloriesBurned) || 0;
+    const calories = exercise.caloriesBurned || 0;
     return acc + calories;
   }, 0);
   // for saved later
   const totalExercises2 = saveLater.length;
   const totalMinutes2 = saveLater.reduce((acc, exercise) => {
     // Parse duration string like "25 min" to get the number
-    const minutes = parseInt(exercise.duration) || 0;
+    const minutes = exercise.duration || 0;
     return acc + minutes;
   }, 0);
   const totalCalories2 = saveLater.reduce((acc, exercise) => {
     // Parse calories string like "180 kcal" to get the number
-    const calories = parseInt(exercise.caloriesBurned) || 0;
+    const calories = exercise.caloriesBurned || 0;
     return acc + calories;
   }, 0);
 

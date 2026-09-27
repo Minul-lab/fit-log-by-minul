@@ -6,10 +6,12 @@ import Link from "next/link";
 import { useContext } from "react";
 import { WorkoutCreateContexts } from "../context/workoutContext";
 import { WorkoutCardplanProps } from "../types/workoutCardPlanProps";
+import { Dispatch, SetStateAction } from "react";
 const WorkoutCardplan = ({ workout, source }: WorkoutCardplanProps) => {
-  const { todaysPlan, setTodaysPlan, saveLater, setSaveLater } = useContext(
-    WorkoutCreateContexts,
-  );
+  const { setTodaysPlan, setSaveLater } = useContext(WorkoutCreateContexts) as {
+    setTodaysPlan: Dispatch<SetStateAction<Iworkout[]>>;
+    setSaveLater: Dispatch<SetStateAction<Iworkout[]>>;
+  };
   const handleRemove = () => {
     if (source === "today") {
       setTodaysPlan((prev) => prev.filter((item) => item.id !== workout.id));
@@ -25,17 +27,17 @@ const WorkoutCardplan = ({ workout, source }: WorkoutCardplanProps) => {
         transition: Bounce,
       });
     } else {
-        toast.error("Removed from saved", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
+      toast.error("Removed from saved", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
       setSaveLater((prev) => prev.filter((item) => item.id !== workout.id));
     }
   };
@@ -80,7 +82,10 @@ const WorkoutCardplan = ({ workout, source }: WorkoutCardplanProps) => {
         <button className="flex-1 rounded-full bg-[#c2f800] px-5 py-2 text-sm font-medium text-black hover:bg-[#b5e800] sm:flex-none">
           Mark as Done
         </button>
-        <button className="btn btn-outline btn-error rounded-full" onClick={()=>handleRemove()}>
+        <button
+          className="btn btn-outline btn-error rounded-full"
+          onClick={() => handleRemove()}
+        >
           Remove
         </button>
       </div>
