@@ -3,11 +3,10 @@ import { FaRegClock, FaFire, FaStar } from "react-icons/fa";
 import { Iworkout } from "../types/workoutType";
 import Link from "next/link";
 
-
-const WorkoutCard = ({workoutData}:{workoutData:Iworkout}) => {
+const WorkoutCard = ({ workoutData }: { workoutData: Iworkout }) => {
   return (
-    <Link href={`/${workoutData.id}`}>
-      <div className="w-full max-w-sm overflow-hidden rounded-2xl border border-slate-700 hover:border-[#c2f800] bg-[#15171c] text-white">
+    <Link href={`/${workoutData.id}`} className="block w-full max-w-sm">
+      <div className="w-full overflow-hidden rounded-2xl border border-slate-700 bg-[#15171c] text-white hover:border-[#c2f800]">
         {/* Image */}
         <div className="relative h-55 w-full">
           <Image

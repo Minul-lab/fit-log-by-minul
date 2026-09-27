@@ -25,8 +25,10 @@ const page = async({params}:IworkoutDetail) => {
           <div className="lg:col-span-2">
             <Image
               src={dataDetail.image}
-              width={500}
-              height={1000}
+              
+              width={800}
+              height={800}
+              className="w-full h-full object-cover rounded-xl"
               alt={dataDetail.name}
             ></Image>
           </div>
@@ -45,7 +47,7 @@ const page = async({params}:IworkoutDetail) => {
 
             {/* Tags */}
             <div className="flex flex-wrap gap-2 mb-8">
-              {dataDetail.muscleGroups.map((muscle:string, index:number) => (
+              {dataDetail.muscleGroups.map((muscle: string, index: number) => (
                 <span
                   key={index}
                   className="bg-lime-400 text-black px-3 py-1 rounded-full text-xs font-semibold"
@@ -129,14 +131,16 @@ const page = async({params}:IworkoutDetail) => {
                 Instructions
               </h2>
               <ol className="space-y-3 list-decimal list-inside">
-                {dataDetail.instructions.map((instruction:string, index:number) => (
-                  <li
-                    key={index}
-                    className="text-gray-400 text-sm leading-relaxed"
-                  >
-                    {instruction}
-                  </li>
-                ))}
+                {dataDetail.instructions.map(
+                  (instruction: string, index: number) => (
+                    <li
+                      key={index}
+                      className="text-gray-400 text-sm leading-relaxed"
+                    >
+                      {instruction}
+                    </li>
+                  ),
+                )}
               </ol>
             </div>
 
