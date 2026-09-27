@@ -110,7 +110,7 @@ const page = async({params}:IworkoutDetail) => {
                     Calories
                   </span>
                   <span className="text-gray-300 font-medium">
-                    {dataDetail.calories}
+                    {dataDetail.caloriesBurned  }
                   </span>
                 </div>
 

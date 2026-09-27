@@ -79,7 +79,8 @@ const WorkoutCardplan = ({ workout, source }: WorkoutCardplanProps) => {
           </button>
         </Link>
 
-        <button className="flex-1 rounded-full bg-[#c2f800] px-5 py-2 text-sm font-medium text-black hover:bg-[#b5e800] sm:flex-none">
+        <button className="flex-1 rounded-full bg-[#c2f800] px-5 py-2 text-sm font-medium text-black hover:bg-[#b5e800] sm:flex-none"
+        onClick={()=>{toast.success("Done")}}>
           Mark as Done
         </button>
         <button
