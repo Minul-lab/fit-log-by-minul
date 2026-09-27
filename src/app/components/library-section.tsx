@@ -23,7 +23,7 @@ const Library = async () => {
         Twelve lifts covering every major muscle group
       </p>
 
-      <div className="grid grid-cols-1 justify-items-center gap-4 lg:grid-cols-3">
+      <div className="grid grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {workoutDatas.map((workoutData: Iworkout) => {
           return (
             <WorkoutCard
