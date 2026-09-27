@@ -1,8 +1,11 @@
-import React from 'react';
+"use client"
+import React, { useContext } from "react";
 import Link from "next/link";
 import Image from 'next/image';
+import { WorkoutCreateContexts } from "../context/workoutContext";
 
 const Navbar = () => {
+  const { todaysPlan, saveLater } = useContext(WorkoutCreateContexts);
     return (
       <div className="container mx-auto">
         <div className="navbar shadow-sm">
@@ -39,11 +42,14 @@ const Navbar = () => {
                 </li>
 
                 <li>
-                  <Link href={"/"}>My plan</Link>
+                  <Link href={"/my-plan"}>My plan</Link>
                 </li>
               </ul>
             </div>
-            <a className="btn btn-ghost text-xl"><Image src="/logo.png" alt='logo' width={40} height={30}></Image>FITLOG</a>
+            <a className="btn btn-ghost text-xl">
+              <Image src="/logo.png" alt="logo" width={40} height={30}></Image>
+              FITLOG
+            </a>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
@@ -57,8 +63,17 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="navbar-end gap-4">
-            <span>Plan 0</span>
-            <span>Saved 0</span>
+            <p>
+              Plan
+              <span className="text-[#c2f800]"> {todaysPlan.length}</span>
+            </p>
+            <p>
+              Saved
+              <span className="text-[#c2f800]">
+                {" "}
+                {saveLater.length}
+              </span>
+            </p>
           </div>
         </div>
       </div>

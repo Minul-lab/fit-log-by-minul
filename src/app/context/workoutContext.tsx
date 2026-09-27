@@ -8,12 +8,13 @@ const WorkoutProvider = ({ children }:{children: React.ReactNode}) => {
   
   const [todaysPlan, setTodaysPlan] = useState([]);
   const [saveLater, setSaveLater] = useState([]);
-
+  
   const sharedData = {
     todaysPlan,
     setTodaysPlan,
     saveLater,
     setSaveLater,
+    
   };
 
   return (
