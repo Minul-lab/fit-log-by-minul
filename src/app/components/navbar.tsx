@@ -3,8 +3,10 @@ import React, { useContext } from "react";
 import Link from "next/link";
 import Image from 'next/image';
 import { WorkoutCreateContexts } from "../context/workoutContext";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const pathname = usePathname();
   const { todaysPlan, saveLater } = useContext(WorkoutCreateContexts);
     return (
       <div className="container mx-auto">
@@ -38,27 +40,63 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <Link href={"/"}>workouts</Link>
+                  <Link
+                    href={"/"}
+                    className={
+                      pathname === "/"
+                        ? "text-[#c2f800]bg-[#d4fe3d]/30 rounded-full mx-1.5"
+                        : "text-white"
+                    }
+                  >
+                    workouts
+                  </Link>
                 </li>
 
                 <li>
-                  <Link href={"/my-plan"}>My plan</Link>
+                  <Link
+                    href={"/my-plan"}
+                    className={
+                      pathname === "/my-plan"
+                        ? "text-[#c2f800] bg-[#d4fe3d]/30 rounded-full"
+                        : "text-white"
+                    }
+                  >
+                    My plan
+                  </Link>
                 </li>
               </ul>
             </div>
-            <a className="btn btn-ghost text-xl">
+            <Link href={"/"} className="btn btn-ghost text-xl">
               <Image src="/logo.png" alt="logo" width={40} height={30}></Image>
               FITLOG
-            </a>
+            </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
               <li>
-                <Link href={"/"}>workouts</Link>
+                <Link
+                  href={"/"}
+                  className={
+                    pathname === "/"
+                      ? "text-[#c2f800] bg-[#d4fe3d]/30 rounded-full mx-1.5"
+                      : "text-white"
+                  }
+                >
+                  workouts
+                </Link>
               </li>
 
               <li>
-                <Link href={"/my-plan"}>My plan</Link>
+                <Link
+                  href={"/my-plan"}
+                  className={
+                    pathname === "/my-plan"
+                      ? "text-[#c2f800] bg-[#d4fe3d]/30 rounded-full"
+                      : "text-white"
+                  }
+                >
+                  My plan
+                </Link>
               </li>
             </ul>
           </div>
@@ -69,10 +107,7 @@ const Navbar = () => {
             </p>
             <p>
               Saved
-              <span className="text-[#c2f800]">
-                {" "}
-                {saveLater.length}
-              </span>
+              <span className="text-[#c2f800]"> {saveLater.length}</span>
             </p>
           </div>
         </div>

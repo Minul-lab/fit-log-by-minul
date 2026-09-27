@@ -8,11 +8,22 @@ const BtnTodaysPlan = ({ dataDetail }: { dataDetail: Iworkout }) => {
   const { todaysPlan, setTodaysPlan } = useContext(WorkoutCreateContexts);
 
   const handleTodaysPlan = () => {
-    setTodaysPlan([...todaysPlan, dataDetail]); 
-    // console.log("btn triggered", [...todaysPlan]);
+    const alreadyAdded = todaysPlan.some(
+      (workout) => workout.id === dataDetail.id,
+    );
+
+    if (alreadyAdded) {
+      toast.info("Already added to today's plan", {
+        position: "top-right",
+        transition: Bounce,
+      });
+      return;
+    }
+
+    setTodaysPlan((prev) => [...prev, dataDetail]);
+
     toast.success("Added to today's plan", {
       position: "top-right",
-      
       transition: Bounce,
     });
   };

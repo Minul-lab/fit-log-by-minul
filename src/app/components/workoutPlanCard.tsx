@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-
+import { Bounce, toast } from "react-toastify";
 import { Iworkout } from "../types/workoutType";
 import Link from "next/link";
 import { useContext } from "react";
@@ -13,7 +13,29 @@ const WorkoutCardplan = ({ workout, source }: WorkoutCardplanProps) => {
   const handleRemove = () => {
     if (source === "today") {
       setTodaysPlan((prev) => prev.filter((item) => item.id !== workout.id));
+      toast.error("Removed from today's plan", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     } else {
+        toast.error("Removed from saved", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       setSaveLater((prev) => prev.filter((item) => item.id !== workout.id));
     }
   };
